@@ -15,4 +15,5 @@ In the attached short example, we use the IfcMaterials and simple material list 
 The code is written with Python 3.9.
 
 Used libraries:
-- sentence-transformers
+- sentence-transformers 
+- re
