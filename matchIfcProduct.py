@@ -3,16 +3,18 @@ from sentence_transformers import SentenceTransformer, util
 class IfcProductMatches:
     def __init__(self, ifcProductName, filtereddatabase, llm_name):
         self.matchingdict = self.matchIfcProduct(ifcProductName, filtereddatabase, llm_name)
-        self.maxSimMatch = self.matchingdict[0]
+        self.maxSimMatch = list(self.matchingdict.keys())[0]
+        self.maxSimScore = list(self.matchingdict.values())[0]
 
     def matchIfcProduct(self, ifcProductName, filtereddatabase, llm_name):
         matchingdict = {}
-        llm = SentenceTransformer(llm_name)
 
-        #encode the IfcProductName using the respective LLM
+        # load the LLM using SentenceTransfomers and encode the IfcProductName using the respective LLM
+        llm = SentenceTransformer(llm_name)
         encodingIfc = llm.encode(ifcProductName)
 
-        #iterate over all filtered datasets, calculate the cosine similarity of each with the IfcProduct and save the result in a Matching Dictionary
+        # iterate over all filtered datasets and encode them, calculate the cosine similarity of each with the IfcProduct
+        # and save the result in a Matching Dictionary
         for dataset in filtereddatabase:
             encodingDataset = llm.encode(dataset)
             cosinesimilarity = float(util.cos_sim(encodingIfc, encodingDataset))
