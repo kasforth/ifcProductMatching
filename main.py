@@ -13,4 +13,5 @@ ifcProductMatches = IfcProductMatches(ifcProductName, filtereddatabase, llm_name
 matchDict = ifcProductMatches.matchingdict
 maxSimMatch = ifcProductMatches.maxSimMatch
 maxSimScore = ifcProductMatches.maxSimScore
-print(maxSimMatch, maxSimScore)
+print(f"The most similar dataset of the IfcProduct {ifcProductName} is " + maxSimMatch)
+print(f"The cosine similarity score of the maximum similar match is " + str(maxSimScore))
