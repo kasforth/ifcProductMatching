@@ -6,7 +6,7 @@ ifcProductName = "concrete"
 filtereddatabase = ["cement", "brick", "rigid insulation"]
 
 # set the name of the chosen LLM
-llm_name = "google-bert/bert-base-uncased"
+llm_name = "bert-base-uncased"
 
 # calculate the cosine similarities and return sorted dictionary with the most similar match and its scores
 ifcProductMatches = IfcProductMatches(ifcProductName, filtereddatabase, llm_name)
