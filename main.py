@@ -1,7 +1,7 @@
 from matchIfcProduct import IfcProductMatches
 
-ifcProduct = "brick"
-filtereddatabase = ["concrete", "masonary"]
+ifcProduct = "concrete"
+filtereddatabase = ["cement", "brick"]
 llm_name = "google-bert/bert-base-uncased"
 
 ifcProductMatches = IfcProductMatches(ifcProduct, filtereddatabase, llm_name)
