@@ -1,4 +1,5 @@
 from sentence_transformers import SentenceTransformer, util
+import re
 
 class IfcProductMatches:
     def __init__(self, ifcProductName, filtereddatabase, llm_name):
@@ -13,13 +14,24 @@ class IfcProductMatches:
         llm = SentenceTransformer(llm_name)
         encodingIfc = llm.encode(ifcProductName)
 
-        # iterate over all filtered datasets and encode them, calculate the cosine similarity of each with the IfcProduct
-        # and save the result in a Matching Dictionary
+        # iterate over all filtered datasets and encode them, calculate the cosine similarity of each term with the IfcProduct
         for dataset in filtereddatabase:
-            encodingDataset = llm.encode(dataset)
-            cosinesimilarity = float(util.cos_sim(encodingIfc, encodingDataset))
-            matchingdict[dataset] = cosinesimilarity
+            encodingTermDataset = llm.encode(dataset)
+            termCosSim = float(util.cos_sim(encodingIfc, encodingTermDataset))
 
-        #sort the Matching Dictionary according to its highest Cosine similarity
+            # calculate cosine similarity of tokenized datasets and tokenized IfcProduct
+            tokenCosSim = []
+            for token_ifcProduct in re.split(r"[ :\-_]", ifcProductName):
+                for token_dataset in re.split(r"[ :\-_]", dataset):
+                    tokenCosSimtemp = float(util.cos_sim(llm.encode(token_ifcProduct), llm.encode(token_dataset)))
+                    tokenCosSim.append(tokenCosSimtemp)
+
+            # select the maximum cosine similarity of whole expression/ term or tokenized and save in dictionary
+            if max(tokenCosSim) > termCosSim:
+                matchingdict[dataset] = termCosSim
+            else:
+                matchingdict[dataset] = max(tokenCosSim)
+
+        # sort the Matching Dictionary according to its highest cosine similarity
         matchingdict = dict(sorted(matchingdict.items(), key=lambda kv: kv[1], reverse=True))
         return matchingdict
