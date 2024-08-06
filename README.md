@@ -6,9 +6,9 @@ This code example and class was defined within the dissertation
 by Kasimir Forth at the Technical University of Munich.
 
 This matching method and its class can be used to semantically enrich for several environmental analyses, 
-such as Life Cycle Assessments (LCA), Material Passports (MP) or Building Energy Performance Simulations (BEPS).
-Depending on the use case, the IfcProduct varies from IfcSpace, IfcElement, and it associated IfcMaterials.
-In the attached short example, we use the IfcMaterials and simple material list as database.
+such as *Life Cycle Assessments (LCA)*, *Material Passports (MP)* or *Building Energy Performance Simulations (BEPS)*.
+Depending on the use case, the *IfcProduct* varies from *IfcSpace*, *IfcElement*, and its associated *IfcMaterial*.
+In the attached short example, we use the *IfcMaterial* and simple material list as database.
 
 
 ## Versions and packages
