@@ -11,12 +11,12 @@ class IfcProductMatches:
         matchingdict = {}
 
         # encode the IfcProductName using the respective LLM
-        encodingIfc = llm.encode(ifcProductName)
+        encodingTermIfcProduct = llm.encode(ifcProductName)
 
         # iterate over all filtered datasets and encode them, calculate the cosine similarity of each term with the IfcProduct
         for dataset in filtereddatabase:
             encodingTermDataset = llm.encode(dataset)
-            termCosSim = float(util.cos_sim(encodingIfc, encodingTermDataset))
+            termCosSim = float(util.cos_sim(encodingTermIfcProduct, encodingTermDataset))
 
             # calculate cosine similarity of tokenized datasets and tokenized IfcProduct
             tokenCosSim = []
