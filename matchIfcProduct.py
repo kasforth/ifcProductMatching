@@ -1,17 +1,16 @@
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import util
 import re
 
 class IfcProductMatches:
-    def __init__(self, ifcProductName, filtereddatabase, llm_name):
-        self.matchingdict = self.matchIfcProduct(ifcProductName, filtereddatabase, llm_name)
+    def __init__(self, ifcProductName, filtereddatabase, llm):
+        self.matchingdict = self.matchIfcProduct(ifcProductName, filtereddatabase, llm)
         self.maxSimMatch = list(self.matchingdict.keys())[0]
         self.maxSimScore = list(self.matchingdict.values())[0]
 
-    def matchIfcProduct(self, ifcProductName, filtereddatabase, llm_name):
+    def matchIfcProduct(self, ifcProductName, filtereddatabase, llm):
         matchingdict = {}
 
-        # load the LLM using SentenceTransfomers and encode the IfcProductName using the respective LLM
-        llm = SentenceTransformer(llm_name)
+        # encode the IfcProductName using the respective LLM
         encodingIfc = llm.encode(ifcProductName)
 
         # iterate over all filtered datasets and encode them, calculate the cosine similarity of each term with the IfcProduct
