@@ -20,7 +20,7 @@ You will be asked to specify the target hub (normally, only your personal space 
 Once forking is done, run `git clone` to download the repo on your machine. 
 
 ### Versions and packages
-The code is written with Python 3.9.
+The code is written with Python 3.12.
 
 Used libraries:
 - sentence-transformers 
