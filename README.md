@@ -46,3 +46,15 @@ Used libraries:
 - DOI of Publication: 10.1016/j.jobe.2024.110312
 - LLM (best-performing, fine-tuned): https://huggingface.co/kforth/IfcElement2ConstructionSets
 - DOI of LLM: 10.57967/hf/3438
+
+## Citation
+
+BibTex:
+
+@misc{Forth2024ifcProductMatching,
+   abstract = {This code example and class was defined within the dissertation "BIM-based semantic enrichment for environmental analyses using Large Language Models" by Kasimir Forth at the Technical University of Munich. This matching method and its class can be used to semantically enrich for several environmental analyses, such as Life Cycle Assessments (LCA), Material Passports (MP) or Building Energy Performance Simulations (BEPS). Depending on the use case, the IfcProduct varies from IfcSpace, IfcElement, and its associated IfcMaterial. In the attached short example, we use the IfcMaterial and simple material list as database.},
+   author = {Kasimir Forth},
+   city = {Munich},
+   title = {ifcProductMatching},
+   year = {2024},
+}
