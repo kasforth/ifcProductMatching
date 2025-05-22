@@ -26,7 +26,7 @@ class IfcProductMatches:
                     tokenCosSim.append(tokenCosSimtemp)
 
             # select the maximum cosine similarity of whole expression/ term or tokenized and save in dictionary
-            if max(tokenCosSim) > termCosSim:
+            if max(tokenCosSim) < termCosSim:
                 matchingdict[dataset] = termCosSim
             else:
                 matchingdict[dataset] = max(tokenCosSim)
